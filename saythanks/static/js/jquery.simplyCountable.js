@@ -99,7 +99,6 @@
           } else {
             changeCountableValue(content.substring(0, options.maxCount));
           }
-          
         }
 
         counter.text(numberFormat(countInt()));
