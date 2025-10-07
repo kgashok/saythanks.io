@@ -1,3 +1,4 @@
+// Attaches an event handler to the badge format dropdown to update the badge code output.
 $(document).on("change", "#badge-format", () => {
   const selectedFormat = $("#badge-format").val();
   const username = $("#username").val();
@@ -19,7 +20,9 @@ $(document).on("change", "#badge-format", () => {
   }
 });
 
-// Function to handle URL encoding for topic parameters
+// Function to handle URL encoding for topic parameter.
+//  If unencoded characters are found, it replaces the current URL with the encoded version.
+ 
 function handleTopicUrlEncoding() {
   const currentUrl = window.location.href;
   const urlPattern = /\/to\/([^\/]+)&(.+)/;
@@ -37,6 +40,7 @@ function handleTopicUrlEncoding() {
 }
 
 // Function to handle URL fragments for topic parameters
+// This is typically run on page load.
 function handleFragmentToTopic() {
   const hash = window.location.hash;
   const pathname = window.location.pathname;

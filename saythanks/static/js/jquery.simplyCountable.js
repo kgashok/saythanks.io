@@ -30,16 +30,16 @@
       options,
     );
 
-    var navKeys = [33, 34, 35, 36, 37, 38, 39, 40];
+    const navKeys = [33, 34, 35, 36, 37, 38, 39, 40];
 
     return $(this).each(function () {
-      var countable = $(this);
-      var counter = $(options.counter);
+      const countable = $(this);
+      const counter = $(options.counter);
       if (!counter.length) {
         return false;
       }
 
-      var countCheck = function () {
+      const countCheck = function () {
         var count;
         let revCount;
 
@@ -51,8 +51,8 @@
           return options.countDirection === "up" ? revCount : count;
         };
 
-        var numberFormat = function (ct) {
-          var prefix = "";
+        const numberFormat = function (ct) {
+          let prefix = "";
           if (options.thousandSeparator) {
             ct = ct.toString();
             // Handle large negative numbers
@@ -60,7 +60,7 @@
               ct = ct.substr(1);
               prefix = "-";
             }
-            for (var i = ct.length - 3; i > 0; i -= 3) {
+            for (let i = ct.length - 3; i > 0; i -= 3) {
               ct = ct.substr(0, i) + options.thousandSeparator + ct.substr(i);
             }
           }
@@ -85,12 +85,12 @@
 
         /* If strictMax set restrict further characters */
         if (options.strictMax && count <= 0) {
-          var content = countable.val();
+          const content = countable.val();
           if (count < 0) {
             options.onMaxCount(countInt(), countable, counter);
           }
           if (options.countType === "words") {
-            var allowedText = content.match(
+            const allowedText = content.match(
               new RegExp("\\s?(\\S+\\s+){" + options.maxCount + "}"),
             );
             if (allowedText) {
