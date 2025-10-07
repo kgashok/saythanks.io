@@ -41,7 +41,7 @@
 
       var countCheck = function () {
         var count;
-        var revCount;
+        let revCount;
 
         var reverseCount = function (ct) {
           return ct - ct * 2 + options.maxCount;
@@ -67,7 +67,7 @@
           return prefix + ct;
         };
 
-        var changeCountableValue = function (val) {
+        const changeCountableValue = function (val) {
           countable.val(val).trigger("change");
         };
 
@@ -99,8 +99,8 @@
           } else {
             changeCountableValue(content.substring(0, options.maxCount));
           }
-          count = 0;
-          revCount = options.maxCount;
+          //count = 0;
+          //revCount = options.maxCount;It's overwritten by countInt()
         }
 
         counter.text(numberFormat(countInt()));

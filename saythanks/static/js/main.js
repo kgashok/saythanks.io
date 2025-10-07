@@ -55,5 +55,5 @@ function handleFragmentToTopic() {
 // Run URL encoding check when page loads
 $(document).ready(() => {
   handleFragmentToTopic();
-  //handleTopicUrlEncoding();
+  handleTopicUrlEncoding();
 });
