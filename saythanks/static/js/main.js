@@ -26,7 +26,7 @@ $(document).on("change", "#badge-format", () => {
 function handleTopicUrlEncoding() {
   const currentUrl = window.location.href;
   const urlPattern = /\/to\/([^\/]+)&(.+)/;
-  const match = currentUrl.match(urlPattern);
+  const match = currentUrl.exec(urlPattern);
 
   if (match) {
     const [, inboxId, topic] = match;
@@ -38,7 +38,7 @@ function handleTopicUrlEncoding() {
     }
   }
 }
-
+// Converts URL fragments into properly encoded topic parameters.
 // Function to handle URL fragments for topic parameters
 // This is typically run on page load.
 function handleFragmentToTopic() {
