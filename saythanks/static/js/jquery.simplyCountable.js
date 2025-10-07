@@ -30,18 +30,18 @@
       options,
     );
 
-    const navKeys = [33, 34, 35, 36, 37, 38, 39, 40];
+    var navKeys = [33, 34, 35, 36, 37, 38, 39, 40];
 
     return $(this).each(function () {
-      const countable = $(this);
-      const counter = $(options.counter);
+      var countable = $(this);
+      var counter = $(options.counter);
       if (!counter.length) {
         return false;
       }
 
-      const countCheck = function () {
+      var countCheck = function () {
         var count;
-        let revCount;
+        var revCount;
 
         var reverseCount = function (ct) {
           return ct - ct * 2 + options.maxCount;
@@ -51,8 +51,8 @@
           return options.countDirection === "up" ? revCount : count;
         };
 
-        const numberFormat = function (ct) {
-          let prefix = "";
+        var numberFormat = function (ct) {
+          var prefix = "";
           if (options.thousandSeparator) {
             ct = ct.toString();
             // Handle large negative numbers
@@ -60,7 +60,7 @@
               ct = ct.substr(1);
               prefix = "-";
             }
-            for (let i = ct.length - 3; i > 0; i -= 3) {
+            for (var i = ct.length - 3; i > 0; i -= 3) {
               ct = ct.substr(0, i) + options.thousandSeparator + ct.substr(i);
             }
           }
@@ -85,7 +85,7 @@
 
         /* If strictMax set restrict further characters */
         if (options.strictMax && count <= 0) {
-          const content = countable.val();
+          var content = countable.val();
           if (count < 0) {
             options.onMaxCount(countInt(), countable, counter);
           }
