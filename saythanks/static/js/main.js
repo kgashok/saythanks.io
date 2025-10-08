@@ -30,7 +30,7 @@ $(document).on("change", "#badge-format", () => {
 function handleTopicUrlEncoding() {
   const currentUrl = window.location.href;
   const urlPattern = /\/to\/([^\/]+)&(.+)/;
-  const match = currentUrl.exec(currentUrl);
+  const match = urlPattern.exec(currentUrl);
 
   if (match) {
     const [, inboxId, topic] = match;
