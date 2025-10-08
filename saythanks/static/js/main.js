@@ -19,14 +19,14 @@ $(document).on("change", "#badge-format", () => {
     $("#badgeCode").val(line1 + line2);
   }
 });
-
-// Function to handle URL encoding for topic parameter.
-//  If unencoded characters are found, it replaces the current URL with the encoded version.
- 
+/** 
+ Function to handle URL encoding for topic parameter.
+  If unencoded characters are found, it replaces the current URL with the encoded version.
+ */
 function handleTopicUrlEncoding() {
   const currentUrl = window.location.href;
   const urlPattern = /\/to\/([^\/]+)&(.+)/;
-  const match = currentUrl.exec(urlPattern);
+  const match = currentUrl.exec(currentUrl);
 
   if (match) {
     const [, inboxId, topic] = match;
@@ -38,9 +38,11 @@ function handleTopicUrlEncoding() {
     }
   }
 }
-// Converts URL fragments into properly encoded topic parameters.
-// Function to handle URL fragments for topic parameters
-// This is typically run on page load.
+/* 
+Converts URL fragments into properly encoded topic parameters.
+ Function to handle URL fragments for topic parameters
+ This is typically run on page load.
+*/
 function handleFragmentToTopic() {
   const hash = window.location.hash;
   const pathname = window.location.pathname;
