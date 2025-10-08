@@ -27,7 +27,7 @@
         onSafeCount: function () {},
         onMaxCount: function () {},
       },
-      options
+      options,
     );
 
     var navKeys = [33, 34, 35, 36, 37, 38, 39, 40];
@@ -67,7 +67,7 @@
           return prefix + ct;
         };
 
-        var changeCountableValue = function (val) {
+        const changeCountableValue = function (val) {
           countable.val(val).trigger("change");
         };
 
@@ -90,8 +90,8 @@
             options.onMaxCount(countInt(), countable, counter);
           }
           if (options.countType === "words") {
-            var allowedText = content.match(
-              new RegExp("\\s?(\\S+\\s+){" + options.maxCount + "}")
+            const allowedText = content.match(
+              new RegExp("\\s?(\\S+\\s+){" + options.maxCount + "}"),
             );
             if (allowedText) {
               changeCountableValue(allowedText[0]);
@@ -99,8 +99,8 @@
           } else {
             changeCountableValue(content.substring(0, options.maxCount));
           }
-          count = 0;
-          revCount = options.maxCount;
+          //count = 0;
+          //revCount = options.maxCount;It's overwritten by countInt()
         }
 
         counter.text(numberFormat(countInt()));

@@ -1,10 +1,13 @@
+/* Attaches an event handler to the badge format dropdown to update the badge code output.
+*@returns{void}
+*/
 $(document).on("change", "#badge-format", () => {
   const selectedFormat = $("#badge-format").val();
   const username = $("#username").val();
 
   if (selectedFormat === "imageurl") {
     $("#badgeCode").val(
-      "https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg"
+      "https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg",
     );
   } else if (selectedFormat === "markdown") {
     const svg =
@@ -18,12 +21,16 @@ $(document).on("change", "#badge-format", () => {
     $("#badgeCode").val(line1 + line2);
   }
 });
-
-// Function to handle URL encoding for topic parameters
+/** 
+ Function to handle URL encoding for topic parameter.
+*If unencoded characters are found, it replaces the current URL with the encoded version.
+* @function handleTopicUrlEncoding
+* @returns{void}
+ */
 function handleTopicUrlEncoding() {
   const currentUrl = window.location.href;
   const urlPattern = /\/to\/([^\/]+)&(.+)/;
-  const match = currentUrl.match(urlPattern);
+  const match = urlPattern.exec(currentUrl);
 
   if (match) {
     const [, inboxId, topic] = match;
@@ -35,8 +42,13 @@ function handleTopicUrlEncoding() {
     }
   }
 }
-
-// Function to handle URL fragments for topic parameters
+/* 
+Converts URL fragments into properly encoded topic parameters.
+ Function to handle URL fragments for topic parameters
+ This is typically run on page load.
+ * @function hanndleFragmentoTopic
+ *@returns {void}
+*/
 function handleFragmentToTopic() {
   const hash = window.location.hash;
   const pathname = window.location.pathname;
@@ -45,8 +57,8 @@ function handleFragmentToTopic() {
   if (pathname.match(/^\/to\/[^\/]+\/?$/) && hash && hash.length > 1) {
     // Remove the # from hash for the URL parameter, but keep it for display
     const topicWithoutHash = hash.substring(1); // Remove the # symbol
-    const topicForUrl = encodeURIComponent('#' + topicWithoutHash); // Add # back and encode
-    const cleanPath = pathname.replace(/\/$/, ''); // Remove trailing slash
+    const topicForUrl = encodeURIComponent("#" + topicWithoutHash); // Add # back and encode
+    const cleanPath = pathname.replace(/\/$/, ""); // Remove trailing slash
     const newUrl = `${cleanPath}&${topicForUrl}`;
     window.location.replace(newUrl);
   }
@@ -55,5 +67,5 @@ function handleFragmentToTopic() {
 // Run URL encoding check when page loads
 $(document).ready(() => {
   handleFragmentToTopic();
-  //handleTopicUrlEncoding();
+  handleTopicUrlEncoding();
 });
