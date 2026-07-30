@@ -398,8 +398,11 @@ def submit_note(inbox_id, topic):
     audio_file = request.files.get('audio')
     audio_filename = None
 
-    if audio_file and audio_file.filename:   # empty FileStorage is truthy — guard on filename
-        upload_folder = os.path.join(app.static_folder, 'recordings')
+if (
+    audio_file
+    and audio_file.filename
+):  # empty FileStorage is truthy — guard on filename        
+    upload_folder = os.path.join(app.static_folder, 'recordings')
         os.makedirs(upload_folder, exist_ok=True)
         # Add a timestamp to the filename to ensure uniqueness
         timestamp = int(time.time())
